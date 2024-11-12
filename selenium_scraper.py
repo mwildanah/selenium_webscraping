@@ -111,36 +111,9 @@ def main1(page,subcat):
     return lst
 
 if __name__ == "__main__":
-    # start_time = time.time()
-    # df = pd.DataFrame()
-    # df_eval = pd.DataFrame()
-    # material_bangunan = ['asbes','baja','batako','batu','batu-bata','besi','beton','engsel','gagang-pintu','gembok','genteng','granit','grendel','jendela','kaca','kawat','kayu','keramik-lantai','kusen-pintu','lantai-kayu','paku','pasir','semen','tanah','triplek']
-    # data_list = []
-    # for n,subcat in enumerate(material_bangunan):
-    #     print('crawling {}/{} subcategory material bangunan'.format(n+1, len(material_bangunan)))
-    #     for page in range(1,6):            
-    #         print('crawling {} page {} ...'.format(subcat, page))
-    #         result = main(page,subcat)
-    #         df_temp = pd.DataFrame(result)
-    #         df_temp['subcat'] = subcat
-    #         df = pd.concat([df,df_temp])
-
-    #         ##eval
-    #         data_list.append({'subcat': subcat,
-    #                     'page': page,
-    #                     'item_found': len(result),
-    #                     'get_date': time.strftime('%Y-%m-%d')})
-    # df_eval = pd.DataFrame(data_list)
-    # df.to_csv('result_crawl_{}_material_bangunan.csv'.format(time.strftime('%Y_%m_%d_%H_%M_%S')),index=False)
-    # df_eval.to_csv('evaluation_subcat_{}_material_bangunan.csv'.format(time.strftime('%Y_%m_%d_%H_%M_%S')),index=False)
-    # print("data material bangunan for {} is done".format(time.strftime('%Y_%m_%d')))
-    # print("--- %s minutes processing time ---" % (int(time.time() - start_time)/60))
-
     start_time = time.time()
     df = pd.DataFrame()
-    # material_bangunan = ['cat-kayu','cat-pelapis','cat-semprot','cat-tembok','kuas-cat','plamir','roller-cat','thinner','wallpaper']
     material_bangunan = ['cat-kayu']
-    data_list = []
     for n,subcat in enumerate(material_bangunan):
         print('crawling {}/{} subcategory cat'.format(n+1, len(material_bangunan)))
         for page in range(1,6):
@@ -150,13 +123,6 @@ if __name__ == "__main__":
             df_temp['subcat'] = subcat
             df = pd.concat([df,df_temp])
 
-            ##eval
-            data_list.append({'subcat': subcat,
-                        'page': page,
-                        'item_found': len(result),
-                        'get_date': time.strftime('%Y-%m-%d')})
-    df_eval = pd.DataFrame(data_list)
     df.to_csv('result_crawl_{}_cat.csv'.format(time.strftime('%Y_%m_%d_%H_%M_%S')),index=False)
-    df_eval.to_csv('evaluation_subcat_{}_cat.csv'.format(time.strftime('%Y_%m_%d_%H_%M_%S')),index=False)
     print("data cat for {} is done".format(time.strftime('%Y_%m_%d')))
     print("--- %s minutes processing time ---" % (int(time.time() - start_time)/60))
